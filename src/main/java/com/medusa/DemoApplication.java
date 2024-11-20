@@ -1,12 +1,12 @@
-package com.udemy1.demo;
+package com.medusa;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.udemy1.demo.dao.StudentDAO;
-import com.udemy1.demo.entity.Student;
+import com.medusa.dao.StudentDAO;
+import com.medusa.entity.Student;
 
 @SpringBootApplication
 public class DemoApplication {

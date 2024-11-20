@@ -1,8 +1,8 @@
-package com.udemy1.demo.dao;
+package com.medusa.dao;
 
 import org.springframework.stereotype.Repository;
 
-import com.udemy1.demo.entity.Student;
+import com.medusa.entity.Student;
 
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;

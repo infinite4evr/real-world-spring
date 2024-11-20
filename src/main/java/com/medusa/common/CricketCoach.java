@@ -1,4 +1,4 @@
-package com.udemy1.demo.common;
+package com.medusa.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

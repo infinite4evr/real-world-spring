@@ -1,4 +1,4 @@
-package com.udemy1.demo.common;
+package com.medusa.common;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;

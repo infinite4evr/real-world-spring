@@ -1,4 +1,4 @@
-package com.udemy1.demo.common;
+package com.medusa.common;
 
 import org.springframework.stereotype.Component;
 
