@@ -18,14 +18,13 @@ public class CategoryController {
 
     final private CategoryService service;
 
+    @Autowired
     public CategoryController(CategoryService service){
         this.service = service;
     }
 
     @GetMapping("/")
-    @Autowired
-    public List<ProductCategory> listProductCategory(CategoryService service, CategoryRepository repository){
-        System.out.println(repository);
+    public List<ProductCategory> listProductCategory(){
         return service.getCategoryList();
     }
 

@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class CategoryService {
 
-    @Autowired
     final private CategoryRepository repository;
 
 
