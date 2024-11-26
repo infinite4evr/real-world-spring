@@ -1,4 +1,4 @@
-package com.medusa.dao;
+package com.medusa.DTO;
 
 import org.springframework.stereotype.Repository;
 
