@@ -1,9 +1,8 @@
 package com.medusa.DTO;
 
 
-import com.medusa.annotations.ExistsInDatabase;
+import com.medusa.annotations.ExistsInDatabase.ExistsInDatabase;
 import com.medusa.entity.ProductCategory;
-import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.*;
 
 public class ProductCategoryDTO {
@@ -83,7 +82,7 @@ public class ProductCategoryDTO {
         return isActive;
     }
 
-    public void setActive(boolean active) {
+    public void setIsActive(boolean active) {
         isActive = active;
     }
 
@@ -91,7 +90,7 @@ public class ProductCategoryDTO {
         return isInternal;
     }
 
-    public void setInternal(boolean internal) {
+    public void setIsInternal(boolean internal) {
         isInternal = internal;
     }
 

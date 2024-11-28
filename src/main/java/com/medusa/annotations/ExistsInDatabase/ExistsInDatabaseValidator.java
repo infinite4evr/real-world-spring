@@ -1,5 +1,6 @@
-package com.medusa.annotations;
+package com.medusa.annotations.ExistsInDatabase;
 
+import com.medusa.annotations.ExistsInDatabase.ExistsInDatabase;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
@@ -28,8 +29,8 @@ public class ExistsInDatabaseValidator implements ConstraintValidator<ExistsInDa
     @Override
     public boolean isValid(Object value, ConstraintValidatorContext context) {
 
-        if (allowZeroInt && value instanceof Integer) {
-            return value.equals(0);
+        if (allowZeroInt && value instanceof Integer && value.equals(0)) {
+           return true;
         }
 
         if (value == null) {
@@ -41,6 +42,7 @@ public class ExistsInDatabaseValidator implements ConstraintValidator<ExistsInDa
             Long count = (Long) entityManager.createQuery(query)
                     .setParameter("value", value)
                     .getSingleResult();
+
 
             return count > 0;
         } catch (Exception e) {

@@ -25,9 +25,6 @@ public class DemoApplication {
     return runner -> {
       createStudent(studentDao);
       createProduct(productDAO);
-
-
-
     };
   }
 
