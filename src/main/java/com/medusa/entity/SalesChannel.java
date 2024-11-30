@@ -11,23 +11,18 @@ import lombok.*;
 @Setter
 @Builder
 public class SalesChannel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
 
+  @Column(name = "name")
+  private String name;
 
-    @Column(name = "name")
-    private String name;
+  @Column(columnDefinition = "TEXT")
+  private String description;
 
-    @Column(columnDefinition = "TEXT")
-    private String description;
+  private boolean isDisabled;
 
-
-    private boolean isDisabled;
-
-
-    @Column(columnDefinition = "TEXT")
-    private String metaData;
-
-
+  @Column(columnDefinition = "TEXT")
+  private String metaData;
 }

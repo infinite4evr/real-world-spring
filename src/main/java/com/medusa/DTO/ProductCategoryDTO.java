@@ -1,6 +1,5 @@
 package com.medusa.DTO;
 
-
 import com.medusa.annotations.ExistsInDatabase.ExistsInDatabase;
 import com.medusa.entity.ProductCategory;
 import jakarta.validation.constraints.Digits;
@@ -17,34 +16,35 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class ProductCategoryDTO {
-    private int id;
+  private int id;
 
-    @NotBlank
-    @Size(min = 2, max = 70)
-    private String name;
+  @NotBlank
+  @Size(min = 2, max = 70)
+  private String name;
 
-    @Size(max = 200)
-    private String description;
+  @Size(max = 200)
+  private String description;
 
-    private String handle;
+  private String handle;
 
-    private String mpath;
+  private String mpath;
 
-    //@Pattern(regexp = "^true$|^false$", message = "allowed input: true or false")
-    private boolean isActive;
+  // @Pattern(regexp = "^true$|^false$", message = "allowed input: true or false")
+  private boolean isActive;
 
-    //@Pattern(regexp = "^true$|^false$", message = "allowed input: true or false")
-    private boolean isInternal;
+  // @Pattern(regexp = "^true$|^false$", message = "allowed input: true or false")
+  private boolean isInternal;
 
-    @Digits(integer = 5, fraction = 0)
-    @PositiveOrZero
-    private int rank;
+  @Digits(integer = 5, fraction = 0)
+  @PositiveOrZero
+  private int rank;
 
+  @ExistsInDatabase(
+      entity = ProductCategory.class,
+      column = "id",
+      message = "Invalid Parent Id",
+      allowZeroInt = true)
+  private int parentCategoryId;
 
-    @ExistsInDatabase(entity = ProductCategory.class, column = "id", message = "Invalid Parent Id", allowZeroInt = true)
-    private int parentCategoryId;
-
-    private String metaData;
-
-
+  private String metaData;
 }

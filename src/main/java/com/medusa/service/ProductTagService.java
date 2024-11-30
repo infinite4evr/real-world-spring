@@ -30,6 +30,8 @@ public class ProductTagService {
     }
 
     public ProductTag createProductTag(ProductTagDTO productTagDTO) {
+
+
         var productTag = new ProductTag();
         productTag.setValue(productTagDTO.getValue());
         productTag.setMetaData(productTagDTO.getMetaData());

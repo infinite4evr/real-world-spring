@@ -4,13 +4,14 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "product_types")
-@AllArgsConstructor
+@Table(name = "product_option_value")
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@Builder
-public class ProductType {
+public class ProductOptionValue {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
@@ -18,6 +19,10 @@ public class ProductType {
   @Column(name = "value")
   private String value;
 
+  @ManyToOne(targetEntity = ProductOption.class)
+  @JoinColumn(name = "option_id")
+  private ProductOption option;
+
   @Column(columnDefinition = "TEXT")
-  private String metaData;
+  private Object metaData;
 }

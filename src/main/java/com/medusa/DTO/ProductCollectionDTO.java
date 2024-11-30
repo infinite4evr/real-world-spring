@@ -11,14 +11,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ProductTagDTO {
+public class ProductCollectionDTO {
   private int id;
 
   @NotBlank
   @Size(min = 2, max = 70)
-  private String value;
+  private String title;
 
-  private int parentCategoryId;
+  private String handle;
 
   private String metaData;
 }

@@ -1,42 +1,38 @@
-package com.medusa.exception;// Custom Error Response Class
-
+package com.medusa.exception; // Custom Error Response Class
 
 public class ErrorResponse {
 
-    private int statusCode;
+  private int statusCode;
+  private String message;
+  private String detail;
 
-    public int getStatusCode() {
-        return statusCode;
-    }
+  public ErrorResponse(int statusCode, String message, String detail) {
+    this.statusCode = statusCode;
+    this.message = message;
+    this.detail = detail;
+  }
 
-    public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
-    }
+  public int getStatusCode() {
+    return statusCode;
+  }
 
-    public String getMessage() {
-        return message;
-    }
+  public void setStatusCode(int statusCode) {
+    this.statusCode = statusCode;
+  }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+  public String getMessage() {
+    return message;
+  }
 
-    public String getDetail() {
-        return detail;
-    }
+  public void setMessage(String message) {
+    this.message = message;
+  }
 
-    public void setDetail(String detail) {
-        this.detail = detail;
-    }
+  public String getDetail() {
+    return detail;
+  }
 
-    private String message;
-
-    private String detail;
-
-    public ErrorResponse(int statusCode, String message, String detail)
-    {
-        this.statusCode = statusCode;
-        this.message = message;
-        this.detail = detail;
-    }
+  public void setDetail(String detail) {
+    this.detail = detail;
+  }
 }
