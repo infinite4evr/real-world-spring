@@ -55,7 +55,7 @@ public class ProductVariant {
   @Column(name = "length")
   private String length;
 
-  @Column(name = "origin_country")
+  @Column(name = "height")
   private String height;
 
   @Column(name = "width")

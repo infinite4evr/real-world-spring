@@ -17,6 +17,10 @@ public class GeneralException extends RuntimeException implements MedusaExceptio
     super();
   }
 
+  public GeneralException(String message) {
+    this(message, message);
+  }
+
   public GeneralException(String message, String detail) {
     super(message);
     this.message = message;
