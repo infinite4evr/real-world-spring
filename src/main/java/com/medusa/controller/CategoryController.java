@@ -62,4 +62,9 @@ public class CategoryController {
 
     throw new GeneralException();
   }
+
+  @GetMapping("/custom-query-list")
+  public ResponseEntity<?> getCategoryList() {
+    return ResponseEntity.ok().body(service.getCustomQueryList());
+  }
 }
