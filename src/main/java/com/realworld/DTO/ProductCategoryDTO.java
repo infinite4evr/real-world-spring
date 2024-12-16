@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class ProductCategoryDTO {
-  private int id;
+  private Long id;
 
   @NotBlank
   @Size(min = 2, max = 70)
@@ -44,7 +44,7 @@ public class ProductCategoryDTO {
       column = "id",
       message = "Invalid Parent Id",
       allowZeroInt = true)
-  private int parentCategoryId;
+  private Long parentCategoryId;
 
   private String metaData;
 }

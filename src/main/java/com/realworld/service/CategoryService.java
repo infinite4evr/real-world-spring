@@ -7,6 +7,7 @@ import com.realworld.repository.CategoryRepository;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
@@ -39,7 +40,13 @@ public class CategoryService {
     category.setInternal(productCategoryDTO.isInternal());
     category.setActive(productCategoryDTO.isActive());
     category.setRank(productCategoryDTO.getRank());
-    category.setParentCategoryId(productCategoryDTO.getParentCategoryId());
+    category.setParent(
+            productCategoryDTO.getParentCategoryId() != null ?  repository
+            .findById(productCategoryDTO.getParentCategoryId())
+            .orElseThrow(
+                () ->
+                    new EntityNotFoundException(
+                        "category", productCategoryDTO.getParentCategoryId())) : null);
     category.setMetaData(productCategoryDTO.getMetaData());
 
     return repository.save(category);
@@ -85,5 +92,36 @@ public class CategoryService {
 
   public List<ProductCategory> getCustomQueryList() {
     return repository.getAllCategory();
+  }
+
+  public List<ProductCategory> getCategoryHierarchy() {
+    List<ProductCategory> allCategories = repository.findAll();
+
+    List<ProductCategory> rootCategories =
+        allCategories.stream()
+            .filter(category -> category.getParent() == null)
+            .toList();
+
+    return rootCategories.stream().map(this::convertToHierarchy).collect(Collectors.toList());
+  }
+
+  public ProductCategory convertToHierarchy(ProductCategory category) {
+    ProductCategory dto = new ProductCategory();
+    dto.setId(category.getId());
+    dto.setName(category.getName());
+
+    List<ProductCategory> children =
+        category.getChildren().stream().map(this::convertToHierarchy).toList();
+
+    dto.setChildren(children);
+
+    return dto;
+  }
+
+  public ProductCategory getParent(Long parentCategoryId) {
+    return repository
+        .findById(parentCategoryId)
+        .orElseThrow(
+            () -> new EntityNotFoundException("parent category not found", parentCategoryId));
   }
 }

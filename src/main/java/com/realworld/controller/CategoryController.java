@@ -67,4 +67,16 @@ public class CategoryController {
   public ResponseEntity<?> getCategoryList() {
     return ResponseEntity.ok().body(service.getCustomQueryList());
   }
+
+
+  @GetMapping("/get-parent/{parentCategoryId}")
+  public  ResponseEntity<?> getParentCategory(@PathVariable Long parentCategoryId) {
+    return  ResponseEntity.ok().body(service.getParent(parentCategoryId));
+  }
+
+
+  @GetMapping("/get-category-hierarchy")
+  public ResponseEntity<?> getCategoryHierarchy() {
+      return ResponseEntity.ok().body(service.getCategoryHierarchy());
+  }
 }

@@ -13,4 +13,5 @@ public interface CategoryRepository extends JpaRepository<ProductCategory, Long>
 
   @Query("select u FROM ProductCategory u ")
   public List<ProductCategory> getAllCategory();
+
 }
