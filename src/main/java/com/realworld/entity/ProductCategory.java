@@ -35,11 +35,11 @@ public class ProductCategory {
   private boolean isActive;
   private boolean isInternal;
   private int rank;
-//  @Nullable private int parentCategoryId;
+
+  //  @Nullable private int parentCategoryId;
 
   @Column(columnDefinition = "TEXT")
   private String metaData;
-
 
   @ManyToOne
   @JoinColumn(name = "parent_category_id")
@@ -47,9 +47,6 @@ public class ProductCategory {
   @JsonIgnore
   private ProductCategory parent;
 
-
   @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<ProductCategory> children = new ArrayList<>();
-
-
 }

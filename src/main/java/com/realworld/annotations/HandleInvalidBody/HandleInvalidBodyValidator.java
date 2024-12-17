@@ -1,5 +1,6 @@
 package com.realworld.annotations.HandleInvalidBody;
 
+import java.util.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -7,8 +8,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.method.HandlerMethod;
-
-import java.util.*;
 
 @ControllerAdvice
 public class HandleInvalidBodyValidator {

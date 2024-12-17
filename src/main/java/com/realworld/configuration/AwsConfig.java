@@ -12,27 +12,26 @@ import software.amazon.awssdk.services.ses.SesClient;
 @Configuration
 public class AwsConfig {
 
-    @Value("${aws.accessKeyId}")
-    private String accessKeyId;
+  @Value("${aws.accessKeyId}")
+  private String accessKeyId;
 
-    @Value("${aws.secretAccessKey}")
-    private String secretAccessKey;
+  @Value("${aws.secretAccessKey}")
+  private String secretAccessKey;
 
-    @Value("${aws.region}")
-    private String region;
+  @Value("${aws.region}")
+  private String region;
 
-    @Bean
-    public AwsCredentialsProvider awsCredentialsProvider() {
-        return StaticCredentialsProvider.create(
-                AwsBasicCredentials.create(accessKeyId, secretAccessKey)
-        );
-    }
+  @Bean
+  public AwsCredentialsProvider awsCredentialsProvider() {
+    return StaticCredentialsProvider.create(
+        AwsBasicCredentials.create(accessKeyId, secretAccessKey));
+  }
 
-    @Bean
-    public SesClient s3Client(AwsCredentialsProvider credentialsProvider) {
-        return SesClient.builder()
-                .region(Region.of(region))
-                .credentialsProvider(credentialsProvider)
-                .build();
-    }
+  @Bean
+  public SesClient s3Client(AwsCredentialsProvider credentialsProvider) {
+    return SesClient.builder()
+        .region(Region.of(region))
+        .credentialsProvider(credentialsProvider)
+        .build();
+  }
 }

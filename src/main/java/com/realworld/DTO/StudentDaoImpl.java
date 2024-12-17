@@ -1,11 +1,9 @@
 package com.realworld.DTO;
 
-import org.springframework.stereotype.Repository;
-
 import com.realworld.entity.Student;
-
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class StudentDaoImpl implements StudentDAO {

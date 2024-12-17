@@ -41,12 +41,14 @@ public class CategoryService {
     category.setActive(productCategoryDTO.isActive());
     category.setRank(productCategoryDTO.getRank());
     category.setParent(
-            productCategoryDTO.getParentCategoryId() != null ?  repository
-            .findById(productCategoryDTO.getParentCategoryId())
-            .orElseThrow(
-                () ->
-                    new EntityNotFoundException(
-                        "category", productCategoryDTO.getParentCategoryId())) : null);
+        productCategoryDTO.getParentCategoryId() != null
+            ? repository
+                .findById(productCategoryDTO.getParentCategoryId())
+                .orElseThrow(
+                    () ->
+                        new EntityNotFoundException(
+                            "category", productCategoryDTO.getParentCategoryId()))
+            : null);
     category.setMetaData(productCategoryDTO.getMetaData());
 
     return repository.save(category);
@@ -98,9 +100,7 @@ public class CategoryService {
     List<ProductCategory> allCategories = repository.findAll();
 
     List<ProductCategory> rootCategories =
-        allCategories.stream()
-            .filter(category -> category.getParent() == null)
-            .toList();
+        allCategories.stream().filter(category -> category.getParent() == null).toList();
 
     return rootCategories.stream().map(this::convertToHierarchy).collect(Collectors.toList());
   }

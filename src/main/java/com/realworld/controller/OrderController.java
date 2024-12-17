@@ -1,6 +1,6 @@
 package com.realworld.controller;
 
-import com.realworld.configuration.MailClient;
+import com.realworld.service.MailClientService;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import lombok.AllArgsConstructor;
@@ -14,19 +14,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/admin/orders")
 @AllArgsConstructor
 public class OrderController {
-  private final MailClient mailClient;
+  private final MailClientService mailClientService;
 
   @PostMapping("send-email")
   public ResponseEntity<?> sendMail() throws Exception {
 
     String templatePath = "templates/email/welcome-email.html";
 
-    mailClient.send(
+    System.out.println("Order controller called");
+
+    mailClientService.send(
         "rss@sudhanshukumar.dev",
         "ggs.sudhanshu@gmail.com",
         "hello",
         new String(Files.readAllBytes(Paths.get(new ClassPathResource(templatePath).getURI())))
             .replace("{{name}}", "Sudhanshu"));
+
+    System.out.println("Order controller returning");
 
     return ResponseEntity.ok().body("Mail triggered");
   }

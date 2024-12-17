@@ -4,13 +4,12 @@ import com.realworld.DTO.ProductTagDTO;
 import com.realworld.entity.ProductTag;
 import com.realworld.exception.EntityNotFoundException;
 import com.realworld.repository.ProductTagRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.ReflectionUtils;
-
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.ReflectionUtils;
 
 @Service
 public class ProductTagService {

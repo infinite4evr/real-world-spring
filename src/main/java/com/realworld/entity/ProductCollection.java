@@ -1,9 +1,8 @@
 package com.realworld.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.List;
+import lombok.*;
 
 @Entity
 @Table(name = "collection")
